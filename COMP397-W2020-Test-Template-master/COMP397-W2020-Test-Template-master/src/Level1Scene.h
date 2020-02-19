@@ -1,3 +1,9 @@
+//Jinkyu Choi 301024988
+//2020-02-18
+//Level1Scene where you roll the dice
+//Referenced from Tom Tsiliopoulos
+
+
 #pragma once
 #ifndef __LEVEL_1_SCENE__
 #define __LEVEL_1_SCENE__
@@ -41,11 +47,17 @@ private:
 
 	Blank* m_pBlank;
 
-	Label* m_pFirstDiceLabel;
-	Label* m_pSecondDiceLabel;
+	Label* m_pFirstDieLabel;
+	Label* m_pSecondDieLabel;
 
+	// methods
+	void RollFirstDie();
+	void RollSecondDie();
 
-
+	//properties
+	int m_pFirstDieValue;
+	int m_pSecondDieValue;
+	
 	// private data member
 	glm::vec2 m_mousePosition;
 	

@@ -1,3 +1,9 @@
+//Jinkyu Choi 301024988
+//2020-02-18
+//Visual Die for Two
+//Referenced from Tom Tsiliopoulos
+
+
 #pragma once
 #ifndef __TWO__
 #define __TWO__

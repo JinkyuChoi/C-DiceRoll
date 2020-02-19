@@ -1,3 +1,9 @@
+//Jinkyu Choi 301024988
+//2020-02-18
+//Visual Die for Five
+//Referenced from Tom Tsiliopoulos
+
+
 #pragma once
 #ifndef __FIVE__
 #define __FIVE__

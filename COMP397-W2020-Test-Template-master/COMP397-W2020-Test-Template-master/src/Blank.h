@@ -1,3 +1,9 @@
+//Jinkyu Choi 301024988
+//2020-02-18
+//Visual Die for Blank
+//Referenced from Tom Tsiliopoulos
+
+
 #pragma once
 #ifndef __BLANK__
 #define __BLANK__

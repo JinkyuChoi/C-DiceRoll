@@ -1,3 +1,9 @@
+//Jinkyu Choi 301024988
+//2020-02-18
+//Visual Die for One
+//Referenced from Tom Tsiliopoulos
+
+
 #pragma once
 #ifndef __ONE__
 #define __ONE__

@@ -1,3 +1,9 @@
+//Jinkyu Choi 301024988
+//2020-02-18
+//Level1Scene where you roll the dice
+//Referenced from Tom Tsiliopoulos
+
+
 #include "Level1Scene.h"
 #include "Game.h"
 #include <iostream>
@@ -14,21 +20,89 @@ Level1Scene::~Level1Scene()
 void Level1Scene::draw()
 {
 	m_pRollButton->draw();
+	
 
-	m_pBlank->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.25, Config::SCREEN_HEIGHT * 0.3));
-	m_pBlank->draw();
 
 	m_pBlank->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.75, Config::SCREEN_HEIGHT * 0.3));
 	m_pBlank->draw();
 
-	m_pFirstDiceLabel->draw();
-	m_pSecondDiceLabel->draw();
+	m_pFirstDieLabel->draw();
+	m_pSecondDieLabel->draw();
+
+	switch (m_pFirstDieValue)
+	{
+	case 1:
+		m_pOne->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.25, Config::SCREEN_HEIGHT * 0.3));
+		m_pOne->draw();
+		break;
+	case 2:
+		m_pTwo->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.25, Config::SCREEN_HEIGHT * 0.3));
+		m_pTwo->draw();
+		break;
+	case 3:
+		m_pThree->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.25, Config::SCREEN_HEIGHT * 0.3));
+		m_pThree->draw();
+		break;
+	case 4:
+		m_pFour->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.25, Config::SCREEN_HEIGHT * 0.3));
+		m_pFour->draw();
+		break;
+	case 5:
+		m_pFive->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.25, Config::SCREEN_HEIGHT * 0.3));
+		m_pFive->draw();
+		break;
+	case 6:
+		m_pSix->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.25, Config::SCREEN_HEIGHT * 0.3));
+		m_pSix->draw();
+		break;
+	default:
+		m_pBlank->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.25, Config::SCREEN_HEIGHT * 0.3));
+		m_pBlank->draw();
+		break;
+	}
+
+	switch (m_pSecondDieValue)
+	{
+	case 1:
+		m_pOne->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.75, Config::SCREEN_HEIGHT * 0.3));
+		m_pOne->draw();
+		break;
+	case 2:
+		m_pTwo->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.75, Config::SCREEN_HEIGHT * 0.3));
+		m_pTwo->draw();
+		break;
+	case 3:
+		m_pThree->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.75, Config::SCREEN_HEIGHT * 0.3));
+		m_pThree->draw();
+		break;
+	case 4:
+		m_pFour->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.75, Config::SCREEN_HEIGHT * 0.3));
+		m_pFour->draw();
+		break;
+	case 5:
+		m_pFive->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.75, Config::SCREEN_HEIGHT * 0.3));
+		m_pFive->draw();
+		break;
+	case 6:
+		m_pSix->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.75, Config::SCREEN_HEIGHT * 0.3));
+		m_pSix->draw();
+		break;
+	default:
+		m_pBlank->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.75, Config::SCREEN_HEIGHT * 0.3));
+		m_pBlank->draw();
+		break;
+	}
 }
 
 void Level1Scene::update()
 {
 	m_pRollButton->setMousePosition(m_mousePosition);
-	m_pRollButton->ButtonClick();
+	if(m_pRollButton->ButtonClick())
+	{
+		RollFirstDie();
+		RollSecondDie();
+		m_pRollButton->setMouseButtonClicked(false);
+	}
 }
 
 void Level1Scene::clean()
@@ -56,7 +130,7 @@ void Level1Scene::handleEvents()
 			switch(event.button.button)
 			{
 			case SDL_BUTTON_LEFT:
-				
+				m_pRollButton->setMouseButtonClicked(true);
 				break;
 			}
 		
@@ -65,7 +139,7 @@ void Level1Scene::handleEvents()
 			switch (event.button.button)
 			{
 			case SDL_BUTTON_LEFT:
-				
+				m_pRollButton->setMouseButtonClicked(false);
 				break;
 			}
 			break;
@@ -132,17 +206,41 @@ void Level1Scene::start()
 {
 	m_pRollButton = new RollButton();
 
+	m_pOne = new One();
+	m_pTwo = new Two();
+	m_pThree = new Three();
+	m_pFour = new Four();
+	m_pFive = new Five();
+	m_pSix = new Six();
+
+
+
+	
 	m_pBlank = new Blank();
 
 	SDL_Color black = { 0,0,0,255 };
-	m_pFirstDiceLabel = new Label("Blank", "Consolas", 20,
+	m_pFirstDieLabel = new Label("Blank", "Consolas", 20,
 		black, glm::vec2(Config::SCREEN_WIDTH * 0.25, Config::SCREEN_HEIGHT * 0.55), true, true);
-	m_pSecondDiceLabel = new Label("Blank", "Consolas", 20,
+	m_pSecondDieLabel = new Label("Blank", "Consolas", 20,
 		black, glm::vec2(Config::SCREEN_WIDTH * 0.75, Config::SCREEN_HEIGHT * 0.55), true, true);
 }
 
 glm::vec2 Level1Scene::getMousePosition()
 {
 	return m_mousePosition;
+}
+
+void Level1Scene::RollFirstDie()
+{
+	int firstDie = Util::RandomRange(1, 6);
+	m_pFirstDieLabel->setText(std::to_string(firstDie));
+	m_pFirstDieValue = firstDie;
+}
+
+void Level1Scene::RollSecondDie()
+{
+	int secondDie = Util::RandomRange(1, 6);
+	m_pSecondDieLabel->setText(std::to_string(secondDie));
+	m_pSecondDieValue = secondDie;
 }
 

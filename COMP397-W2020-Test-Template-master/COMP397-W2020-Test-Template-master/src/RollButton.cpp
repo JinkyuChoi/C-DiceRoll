@@ -1,5 +1,10 @@
-#include "RollButton.h"
+//Jinkyu Choi 301024988
+//2020-02-18
+//Button to roll the Dice
+//Referenced from Tom Tsiliopoulos
 
+
+#include "RollButton.h"
 #include "Config.h"
 
 RollButton::RollButton()
