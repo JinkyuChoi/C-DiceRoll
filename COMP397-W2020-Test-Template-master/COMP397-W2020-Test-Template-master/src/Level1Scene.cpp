@@ -20,11 +20,7 @@ Level1Scene::~Level1Scene()
 void Level1Scene::draw()
 {
 	m_pRollButton->draw();
-	
-
-
-	m_pBlank->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.75, Config::SCREEN_HEIGHT * 0.3));
-	m_pBlank->draw();
+	m_pNextButton->draw();
 
 	m_pFirstDieLabel->draw();
 	m_pSecondDieLabel->draw();
@@ -32,31 +28,31 @@ void Level1Scene::draw()
 	switch (m_pFirstDieValue)
 	{
 	case 1:
-		m_pOne->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.25, Config::SCREEN_HEIGHT * 0.3));
+		m_pOne->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.40, Config::SCREEN_HEIGHT * 0.3));
 		m_pOne->draw();
 		break;
 	case 2:
-		m_pTwo->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.25, Config::SCREEN_HEIGHT * 0.3));
+		m_pTwo->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.40, Config::SCREEN_HEIGHT * 0.3));
 		m_pTwo->draw();
 		break;
 	case 3:
-		m_pThree->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.25, Config::SCREEN_HEIGHT * 0.3));
+		m_pThree->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.40, Config::SCREEN_HEIGHT * 0.3));
 		m_pThree->draw();
 		break;
 	case 4:
-		m_pFour->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.25, Config::SCREEN_HEIGHT * 0.3));
+		m_pFour->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.40, Config::SCREEN_HEIGHT * 0.3));
 		m_pFour->draw();
 		break;
 	case 5:
-		m_pFive->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.25, Config::SCREEN_HEIGHT * 0.3));
+		m_pFive->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.40, Config::SCREEN_HEIGHT * 0.3));
 		m_pFive->draw();
 		break;
 	case 6:
-		m_pSix->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.25, Config::SCREEN_HEIGHT * 0.3));
+		m_pSix->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.40, Config::SCREEN_HEIGHT * 0.3));
 		m_pSix->draw();
 		break;
 	default:
-		m_pBlank->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.25, Config::SCREEN_HEIGHT * 0.3));
+		m_pBlank->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.40, Config::SCREEN_HEIGHT * 0.3));
 		m_pBlank->draw();
 		break;
 	}
@@ -64,31 +60,31 @@ void Level1Scene::draw()
 	switch (m_pSecondDieValue)
 	{
 	case 1:
-		m_pOne->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.75, Config::SCREEN_HEIGHT * 0.3));
+		m_pOne->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.60, Config::SCREEN_HEIGHT * 0.3));
 		m_pOne->draw();
 		break;
 	case 2:
-		m_pTwo->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.75, Config::SCREEN_HEIGHT * 0.3));
+		m_pTwo->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.60, Config::SCREEN_HEIGHT * 0.3));
 		m_pTwo->draw();
 		break;
 	case 3:
-		m_pThree->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.75, Config::SCREEN_HEIGHT * 0.3));
+		m_pThree->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.60, Config::SCREEN_HEIGHT * 0.3));
 		m_pThree->draw();
 		break;
 	case 4:
-		m_pFour->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.75, Config::SCREEN_HEIGHT * 0.3));
+		m_pFour->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.60, Config::SCREEN_HEIGHT * 0.3));
 		m_pFour->draw();
 		break;
 	case 5:
-		m_pFive->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.75, Config::SCREEN_HEIGHT * 0.3));
+		m_pFive->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.60, Config::SCREEN_HEIGHT * 0.3));
 		m_pFive->draw();
 		break;
 	case 6:
-		m_pSix->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.75, Config::SCREEN_HEIGHT * 0.3));
+		m_pSix->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.60, Config::SCREEN_HEIGHT * 0.3));
 		m_pSix->draw();
 		break;
 	default:
-		m_pBlank->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.75, Config::SCREEN_HEIGHT * 0.3));
+		m_pBlank->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.60, Config::SCREEN_HEIGHT * 0.3));
 		m_pBlank->draw();
 		break;
 	}
@@ -102,6 +98,13 @@ void Level1Scene::update()
 		RollFirstDie();
 		RollSecondDie();
 		m_pRollButton->setMouseButtonClicked(false);
+	}
+
+	m_pNextButton->setMousePosition(m_mousePosition);
+	if (m_pNextButton->ButtonClick())
+	{
+		TheGame::Instance()->changeSceneState(SceneState::LEVEL2_SCENE);
+		m_pNextButton->setMouseButtonClicked(false);
 	}
 }
 
@@ -131,6 +134,7 @@ void Level1Scene::handleEvents()
 			{
 			case SDL_BUTTON_LEFT:
 				m_pRollButton->setMouseButtonClicked(true);
+				m_pNextButton->setMouseButtonClicked(true);
 				break;
 			}
 		
@@ -140,6 +144,7 @@ void Level1Scene::handleEvents()
 			{
 			case SDL_BUTTON_LEFT:
 				m_pRollButton->setMouseButtonClicked(false);
+				m_pNextButton->setMouseButtonClicked(false);
 				break;
 			}
 			break;
@@ -205,6 +210,7 @@ void Level1Scene::handleEvents()
 void Level1Scene::start()
 {
 	m_pRollButton = new RollButton();
+	m_pNextButton = new NextButton();
 
 	m_pOne = new One();
 	m_pTwo = new Two();
@@ -220,9 +226,9 @@ void Level1Scene::start()
 
 	SDL_Color black = { 0,0,0,255 };
 	m_pFirstDieLabel = new Label("Blank", "Consolas", 20,
-		black, glm::vec2(Config::SCREEN_WIDTH * 0.25, Config::SCREEN_HEIGHT * 0.55), true, true);
+		black, glm::vec2(Config::SCREEN_WIDTH * 0.40, Config::SCREEN_HEIGHT * 0.55), true, true);
 	m_pSecondDieLabel = new Label("Blank", "Consolas", 20,
-		black, glm::vec2(Config::SCREEN_WIDTH * 0.75, Config::SCREEN_HEIGHT * 0.55), true, true);
+		black, glm::vec2(Config::SCREEN_WIDTH * 0.60, Config::SCREEN_HEIGHT * 0.55), true, true);
 }
 
 glm::vec2 Level1Scene::getMousePosition()

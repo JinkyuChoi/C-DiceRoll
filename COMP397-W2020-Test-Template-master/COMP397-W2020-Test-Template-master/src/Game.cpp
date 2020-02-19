@@ -4,6 +4,8 @@
 #include <algorithm>
 #include <iomanip>
 
+#include "Level2Scene.h"
+
 
 Game* Game::s_pInstance = 0;
 
@@ -153,6 +155,10 @@ void Game::changeSceneState(SceneState newState)
 			break;
 		case SceneState::LEVEL1_SCENE:
 			m_currentScene = new Level1Scene();
+			std::cout << "play scene activated" << std::endl;
+			break;
+		case SceneState::LEVEL2_SCENE:
+			m_currentScene = new Level2Scene();
 			std::cout << "play scene activated" << std::endl;
 			break;
 		case SceneState::END_SCENE:
