@@ -31,6 +31,9 @@
     <Filter Include="Enums">
       <UniqueIdentifier>{c00e61a2-9515-4297-a699-76a9a5f3005e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game Objects\Dice">
+      <UniqueIdentifier>{53de0cd3-5aba-4d23-ae30-c6759de7b687}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -107,6 +110,30 @@
     </ClCompile>
     <ClCompile Include="..\src\Ocean.cpp">
       <Filter>Game Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\One.cpp">
+      <Filter>Game Objects\Dice</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Two.cpp">
+      <Filter>Game Objects\Dice</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Three.cpp">
+      <Filter>Game Objects\Dice</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Four.cpp">
+      <Filter>Game Objects\Dice</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Five.cpp">
+      <Filter>Game Objects\Dice</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Six.cpp">
+      <Filter>Game Objects\Dice</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\RollButton.cpp">
+      <Filter>Game Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Blank.cpp">
+      <Filter>Game Objects\Dice</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -205,6 +232,30 @@
     </ClInclude>
     <ClInclude Include="..\src\Ocean.h">
       <Filter>Game Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\One.h">
+      <Filter>Game Objects\Dice</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Two.h">
+      <Filter>Game Objects\Dice</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Three.h">
+      <Filter>Game Objects\Dice</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Four.h">
+      <Filter>Game Objects\Dice</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Five.h">
+      <Filter>Game Objects\Dice</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Six.h">
+      <Filter>Game Objects\Dice</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\RollButton.h">
+      <Filter>Game Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Blank.h">
+      <Filter>Game Objects\Dice</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

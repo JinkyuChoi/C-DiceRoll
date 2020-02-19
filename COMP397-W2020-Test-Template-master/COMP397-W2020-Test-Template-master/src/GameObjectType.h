@@ -10,6 +10,7 @@ enum GameObjectType {
 	ENEMY,
 	OCEAN,
 	PLANE,
+	DICE,
 	START_BUTTON,
 	NUM_OF_TYPES
 };
